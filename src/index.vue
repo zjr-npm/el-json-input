@@ -40,7 +40,7 @@ export default {
                 onChange: this.onEditorChange,
                 onBlur: this.onEditorBlur,
             });
-            this.editor.setText("");
+            this.setEditorText(this.editorText);
             this.$el.querySelector(".jsoneditor-repair").classList.add("el-icon-magic-stick");
 
             return this.editor;
@@ -76,20 +76,23 @@ export default {
         }
     },
     watch: {
-        value(val) {
-            let _val = "";
-            const valType = getInstanceTypeof(val);
+        value: {
+            immediate: true,
+            handler(val) {
+                let _val = "";
+                const valType = getInstanceTypeof(val);
 
-            if (~["Array", "Object"].indexOf(valType)) {
-                _val = JSON.stringify(val);
-            } else if (valType === "String") {
-                _val = val;
-            }
-            if (_val !== this.editorText) {
-                this.editorText = _val;
+                if (~["Array", "Object"].indexOf(valType)) {
+                    _val = JSON.stringify(val);
+                } else if (valType === "String") {
+                    _val = val;
+                }
+                if (_val !== this.editorText) {
+                    this.editorText = _val;
 
-                this.setEditorText(_val);
-                this.emitEvent('change', 'change');
+                    this.setEditorText(_val);
+                    this.emitEvent('change', 'change');
+                }
             }
         }
     }
