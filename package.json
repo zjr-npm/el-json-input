@@ -24,5 +24,19 @@
 		"json",
 		"element-ui",
 		"components"
-	]
+	],
+	"contributors": [
+		{
+			"name": "JIARUI ZHANG",
+			"email": "zhangjr0575@qq.com"
+		}
+	],
+	"homepage": "https://github.com/zjr-npm/el-json-input",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/zjr-npm/el-json-input.git"
+	},
+	"bugs": {
+		"url": "https://github.com/zjr-npm/el-json-input/issues"
+	}
 }
